@@ -1,102 +1,68 @@
 # Pergunta 1.3: existem padrões diferentes por plataforma?
 
-Notebook: [`notebooks/parte1/1_3_padroes_por_plataforma.ipynb`](../../notebooks/parte1/1_3_padroes_por_plataforma.ipynb). Termos em [`docs/glossario.md`](../glossario.md).
+Notebook: [`notebooks/parte1/1_3_padroes_por_plataforma.ipynb`](../../notebooks/parte1/1_3_padroes_por_plataforma.ipynb).
 
 ## Pergunta
 
 Existem padrões diferentes por plataforma? O que funciona no TikTok funciona no LinkedIn (por exemplo)?
 
-O "TikTok × LinkedIn" é só um exemplo. A pergunta é geral, então comparo **as três plataformas da base (Meta, TikTok e LinkedIn) e os três pares** (Meta × TikTok, Meta × LinkedIn, TikTok × LinkedIn), sem privilegiar nenhum.
+Li o "TikTok × LinkedIn" como um exemplo. Por isso comparei as três redes da base (Meta, TikTok e LinkedIn), duas a duas.
 
 ## Resposta curta
 
-**Sim, existem padrões diferentes, mas eles estão em como cada rede é, e pouco no que funciona nela.**
+Sim, as redes são diferentes, mas a diferença está mais no **ambiente** de cada uma do que no **que funciona** nelas.
 
-- **O contexto muda muito de rede para rede:**
-  - CPC de R$0,51 no TikTok, R$0,80 no Meta e R$2,49 no LinkedIn;
-  - CPA (custo por conversão) de R$15,9 no TikTok, R$24,2 no Meta e R$70,2 no LinkedIn. A taxa de conversão é a mesma nas três (cerca de 3,3%): a conversão no LinkedIn custa mais porque o clique é mais caro, não porque converte menos;
-  - o TikTok engaja quase o dobro;
-  - ROAS (sem Branding) de 2,9 no TikTok, 1,9 no Meta e 0,6 no LinkedIn;
-  - o TikTok é vertical e curto; o LinkedIn, horizontal ou quadrado e mais longo.
-- **O que funciona é quase o mesmo nas três:** gancho (cerca de +17 pontos de nota), rosto (+9 a +12) e evitar muito texto (−12 a −16). Comparando os efeitos par a par, **só 1 de 72 diferenças entre redes é confiável**, menos do que o acaso daria.
-- **As diferenças que apareceram (indícios):**
+O ambiente muda muito:
 
-| Par | O que muda |
-|---|---|
-| Meta × TikTok | **voz:** tirar a voz custa cerca de 12 pontos a mais no TikTok; **rosto:** segura a retenção no Meta (+32%), não no TikTok (−6%) |
-| Meta × LinkedIn | **gancho:** pesa um pouco mais no LinkedIn (+24,7 contra +17,1 pontos, no limite do confiável) |
-| TikTok × LinkedIn | nenhuma diferença confiável no efeito dos atributos (o LinkedIn tem poucos criativos) |
+- um clique custa R$0,51 no TikTok, R$0,80 no Meta e R$2,49 no LinkedIn;
+- cada venda custa R$15,9, R$24,2 e R$70,2, nessa ordem. A taxa de conversão é a mesma nas três (cerca de 3%): no LinkedIn, a venda é mais cara porque o clique é mais caro, não porque as pessoas compram menos;
+- o TikTok engaja quase o dobro das outras;
+- o TikTok é quase todo vertical e curto, e o LinkedIn é horizontal ou quadrado e mais longo.
 
-- **Para o exemplo do case:** o que funciona no TikTok funciona no LinkedIn na **direção**. Não achei diferença confiável nesse par, mas é o par com menos criativos para detectar diferenças finas.
+Já o que funciona é quase o mesmo nas três redes: gancho (cerca de +17 pontos de nota), rosto (+9 a +12) e evitar muito texto (−12 a −16). Comparei o efeito de cada atributo entre as redes, duas a duas, e só 1 de 72 diferenças foi confiável. É menos do que o acaso produziria.
+
+Apareceram dois indícios de diferença. No TikTok, tirar a voz e deixar só música custa cerca de 12 pontos a mais do que no Meta. E o gancho parece pesar um pouco mais no LinkedIn. Respondendo ao exemplo do enunciado: o que funciona no TikTok funciona no LinkedIn na mesma direção. Não achei nenhuma diferença confiável entre essas duas redes, mas o LinkedIn tem poucos vídeos para enxergar diferenças pequenas.
 
 ## O que fiz, passo a passo
 
-1. **Perfil de cada rede:**
-   - mediana de custo (CPM, CPC, CPA), CTR, engajamento, retenção, taxa de conversão, ROAS (sem Branding) e nota;
-   - **eta²** (quanto da variação se explica só por saber a plataforma);
-   - `crosstab` do que cada rede veicula.
-2. **Efeito de cada atributo dentro de cada rede:**
-   - a diferença das medianas com e sem o atributo, com intervalo de 95% por bootstrap (como na pergunta 1.2);
-   - quatro métricas: CTR, engajamento, retenção e nota;
-   - heatmap atributo × rede, com o n de cada célula; células com menos de 15 criativos ficam em branco;
-   - dois atributos viraram sim/não: "muito texto" e "mais música que voz" (música/voz acima de 0,5).
-3. **O efeito muda de uma rede para outra? (par a par)**
-   - para cada atributo, métrica e par de redes: efeito na rede A − efeito na rede B;
-   - o intervalo de 95% vem dos mesmos sorteios do bootstrap: em cada sorteio, subtraio um efeito do outro;
-   - diferença confiável = o intervalo inteiro de um lado do zero.
-4. **"Funciona igual?"** juntando os passos 2 e 3 numa regra de bolso:
-   - **funciona igual nas 3:** mesmo sinal nas três, confiável em pelo menos duas, e nenhum par com diferença confiável;
-   - **mesma direção, força diferente:** mesmo sinal nas três, mas algum par com diferença confiável;
-   - **funciona diferente:** confiável numa rede e com sinal oposto em outra;
-   - **não dá para afirmar:** o resto.
-   
-   Depois, a **regressão linear dentro de cada rede** (a mesma da pergunta 1.2, com menos colunas de contexto), e a comparação dos pesos par a par, do mesmo jeito do passo 3.
-5. **Duração por rede:** mediana por faixa de duração.
-6. **Formato por rede:** cada par de formatos dentro de cada rede (quando os dois têm 15 criativos ou mais).
-7. **Texto por rede:** mediana por nível de texto.
-8. **Manual por plataforma:** os 3 atributos que mais sobem a nota e os 2 que mais derrubam. Salvei a tabela completa em `data/processed/efeitos_por_plataforma.csv`.
+**1. Descrevi cada rede:** custos, cliques, engajamento, retenção, conversão, retorno e nota, além do tipo de vídeo que cada uma usa. Também medi quanto de cada métrica se explica só por saber a rede.
+
+**2. Medi o efeito de cada atributo dentro de cada rede.** É a mesma comparação da pergunta 1.2 (vídeos com e sem o atributo, com o teste de confiança por sorteios repetidos), feita separadamente no Meta, no TikTok e no LinkedIn.
+
+**3. Comparei as redes duas a duas.** Aqui está o cuidado principal. Dizer "o rosto é confiável no TikTok e não no LinkedIn" não prova que o rosto funciona diferente nas duas. Pode ser só que o LinkedIn tem menos vídeos, e por isso a medida dele é mais incerta. Para afirmar que um efeito muda de uma rede para outra, calculei a **diferença entre os efeitos** e perguntei se essa diferença é confiável.
+
+**4. Usei uma regressão linear dentro de cada rede** (a conta "mantendo todo o resto igual" da pergunta 1.2). Ela separa atributos que vêm juntos e que a comparação simples mistura.
+
+**5. Olhei duração, formato e quantidade de texto em cada rede**, sempre com o número de vídeos de cada grupo. Grupos com menos de 15 vídeos ficaram de fora, porque mudam muito por acaso.
+
+**6. Montei um manual por rede:** o que mais sobe e o que mais derruba a nota em cada uma. Salvei a tabela completa para o motor de recomendações da Parte 3.
 
 ## Por que fiz assim
 
-- **Comparar todos os pares** responde à pergunta geral. Olhar só TikTok × LinkedIn deixaria de fora o Meta, a rede com mais criativos e, portanto, a mais bem medida.
-- **Testar a diferença entre os efeitos, e não só cada efeito:** "o rosto é confiável no TikTok e não no LinkedIn" não quer dizer que o rosto funciona diferente nas duas. Pode ser só que o LinkedIn tem menos criativos. Para afirmar que um efeito muda, o intervalo da **diferença** precisa ficar de um lado do zero.
-- **A regressão por rede** foi necessária porque a comparação simples mistura atributos. Exemplo: "mais música que voz" no TikTok dava só −3,8 pontos na comparação simples; na regressão, mantendo o resto igual, aparece −13,4.
-- **O limite de 15 criativos** evita conclusões com grupos minúsculos, que mudam muito por acaso.
+**Comparar todos os pares responde à pergunta geral.** Olhar só TikTok × LinkedIn deixaria de fora o Meta, a rede com mais vídeos e, portanto, a mais bem medida.
+
+**Testar a diferença entre os efeitos, e não só cada efeito.** Sem esse cuidado, eu confundiria "falta de dados numa rede" com "a rede funciona diferente".
+
+**Usar a regressão por rede**, porque a comparação simples mistura atributos. Um exemplo: na comparação simples, "mais música que voz" no TikTok tirava só 3,8 pontos, porque esses vídeos também diferiam em outras coisas. Mantendo o resto igual, o efeito aparece de verdade: −13,4 pontos.
 
 ## O que descobri
 
-- **Custo:** CPM mediano de R$131 no LinkedIn, R$49 no Meta e R$27 no TikTok. A plataforma explica 77% da variação do CPC.
-- **CTR quase igual nas três** (6,0% a 6,6%). Engajamento do TikTok: 3,2%, contra 1,6% a 1,8% nas outras.
-- **Taxa de conversão igual nas três** (3,2% a 3,3%; eta² 0,00). Já o CPA vai de R$15,9 (TikTok) a R$70,2 (LinkedIn), cerca de 4,4 vezes: a diferença vem do custo do clique.
-- **Efeito de cada atributo, rede a rede:**
-  - gancho: nota +17 a +18, retenção +32% a +42% e CTR +53% a +133%, nas três;
-  - rosto: nota +9 a +12 nas três;
-  - muito texto: nota −12 a −16 e retenção −9% a −33%, nas três;
-  - CTA e legenda: sobem a nota nas três, mas só são confiáveis no Meta.
-- **Par a par (medianas):** de 72 comparações, só o rosto na retenção (Meta × TikTok) muda de forma confiável. Os intervalos das diferenças são largos (cerca de 90 pontos percentuais no par Meta × TikTok e cerca de 130 nos pares com o LinkedIn): só diferenças grandes seriam detectadas.
-- **Na regressão por rede:**
-  - gancho +17 a +25 pontos, rosto +10 a +13, muito texto −13 a −20, nas três;
-  - **voz:** só música, sem voz, dá −13,4 no TikTok, −1,2 no Meta e −1,8 no LinkedIn. A diferença Meta × TikTok (12,2 pontos, intervalo de 0,4 a 23,9) é confiável;
-  - **gancho:** +24,7 no LinkedIn contra +17,1 no Meta (diferença de 7,6, intervalo de 0,5 a 16,4, no limite);
-  - 2 de 21 comparações confiáveis; cerca de 1 sairia por acaso, então trato as duas como indícios.
-- **Sem duração ideal por rede:** a "melhor faixa" muda de uma métrica para outra, e os grupos são pequenos.
-- **Formato:** das 15 comparações possíveis, só 1 é confiável: no Meta, o vertical engaja 57% mais que o horizontal. Na nota e no CTR, nenhum formato ganha de outro em nenhuma rede. "Vertical × horizontal" não pode ser testado no TikTok (não há horizontal) nem no LinkedIn (só 9 verticais).
-- **Texto:** muito texto derruba a nota nas três redes; no CTR, só a queda do Meta (−32%) é confiável.
+**O custo depende muito da rede.** A rede explica 77% da variação do custo por clique. Comparar custos entre redes sem levar isso em conta é injusto. O CTR, por outro lado, é quase igual nas três (de 6,0% a 6,6%).
 
-**Manual por plataforma:**
+**Os atributos funcionam do mesmo jeito nas três redes.** O gancho sobe a nota em 17 a 18 pontos e a retenção em 32% a 42%, nas três. O rosto sobe a nota em 9 a 12 pontos, nas três. Muito texto derruba a nota em 12 a 16 pontos, nas três. A chamada para ação e a legenda também sobem a nota nas três, mas só são confiáveis no Meta, a rede com mais vídeos.
 
-| Rede | Fazer | Evitar |
-|---|---|---|
-| Meta | gancho (+18,3 pts), rosto (+12,2), CTA (+7,5) | muito texto (−14,2) |
-| TikTok | gancho (+17,0), rosto (+8,8), legenda (+5,1) | muito texto (−16,5); só música, sem voz (−13,4 na regressão) |
-| LinkedIn | gancho (+17,3), rosto (+11,8), legenda (+10,9) | muito texto (−11,8) |
+**Comparando os efeitos de rede para rede, quase nada muda.** Das 72 comparações, só uma foi confiável: o rosto segura a retenção no Meta (+32%), mas não no TikTok (−6%). Isso não prova que os efeitos sejam iguais. As medidas são incertas o bastante para que só diferenças grandes apareçam. Mas não há sinal de diferença.
 
-Para a Parte 3: o motor de recomendações pode partir de regras comuns às três redes e somar poucos ajustes por rede (a voz no TikTok).
+**Na regressão por rede, apareceram dois indícios.** Vídeo só com música, sem voz, perde 13,4 pontos no TikTok, e quase nada no Meta (−1,2) e no LinkedIn (−1,8). A diferença entre TikTok e Meta é confiável. O gancho vale 24,7 pontos no LinkedIn, contra 17,1 no Meta, uma diferença no limite do confiável. Como fiz 21 comparações, uma delas poderia ser sorte. Por isso trato as duas como indícios, e a da voz como a mais forte.
+
+**Não há duração ideal por rede.** A "melhor faixa" muda de uma métrica para outra, e os grupos são pequenos.
+
+**O formato quase não importa dentro de cada rede.** Na nota e nos cliques, nenhum formato ganha de outro. A única diferença confiável: no Meta, o vertical engaja 57% mais que o horizontal.
+
+**Muito texto atrapalha nas três redes.** Nos cliques, a queda só é confiável no Meta (−32%), justamente o exemplo que o enunciado dava.
+
+**O manual por rede.** No Meta, as melhores escolhas são gancho (+18 pontos), rosto (+12) e chamada para ação (+8). No TikTok, gancho (+17), rosto (+9) e legenda (+5). No LinkedIn, gancho (+17), rosto (+12) e legenda (+11). Nas três, o que mais derruba é muito texto (de −12 a −17). No TikTok, também derruba o vídeo só com música, sem voz. O manual quase se repete, e isso diz algo importante para a Parte 3: o motor pode usar regras comuns às três redes e acrescentar poucos ajustes, como a voz no TikTok.
 
 ## Limites
 
-- **Não achar diferença não prova que os efeitos são iguais:** com estes tamanhos, só diferenças grandes seriam detectadas.
-- **LinkedIn com 66 criativos** (53 com dados completos na regressão): os pares com o LinkedIn quase não conseguem detectar diferenças; os números dele são direção, não estimativa precisa.
-- **Muitas comparações:** com 72 (medianas) e 21 (regressão), algumas sairiam "confiáveis" por acaso. Por isso, as diferenças encontradas são indícios.
-- **Células vazias ou pequenas** (TikTok sem horizontal, LinkedIn com 9 verticais) impedem algumas comparações.
-- **Dados observados e simulados:** associação, não causa.
+Não achar diferença não prova igualdade: com estes tamanhos, só diferenças grandes seriam detectadas. O LinkedIn tem só 66 vídeos, então os números dele indicam uma direção, não um valor preciso. Algumas comparações não puderam ser feitas, porque o TikTok não tem vídeo horizontal e o LinkedIn tem só 9 verticais. E, como em toda a Parte 1, são dados observados e simulados: o que anda junto, não necessariamente o que causa.

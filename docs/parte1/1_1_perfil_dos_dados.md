@@ -42,7 +42,7 @@ Também organizei as métricas por etapa: ver, interagir, clicar, comprar. Isso 
 - o **custo por conversão** (CPA), quanto custa cada venda ou cadastro;
 - o **número de boas práticas** do vídeo (gancho, rosto, chamada para ação e legenda, de 0 a 4).
 
-**8. Passei a limpeza para um arquivo reaproveitável** (`src/limpeza.py`). Conferi que ele dá exatamente o mesmo resultado do passo a passo e salvei os dados limpos.
+**8. Passei a limpeza para um arquivo reaproveitável** (`src/limpeza.py`) e conferi que ele dá exatamente o mesmo resultado do passo a passo. Não salvo uma cópia dos dados limpos: os outros notebooks aplicam essa mesma função ao arquivo original, então todos usam sempre a mesma limpeza e não sobra uma cópia que possa ficar desatualizada.
 
 ## Por que fiz assim
 

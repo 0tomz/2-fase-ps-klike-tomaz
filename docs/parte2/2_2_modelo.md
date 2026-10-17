@@ -32,7 +32,7 @@ Testei também se valeria a pena ter um modelo separado para cada rede social. N
 
 **5. Testei um modelo por rede social contra um modelo único.** Em cada uma das 15 provas, treinei um modelo com as três redes juntas e três modelos separados, e medi o erro de cada rede.
 
-**6. Treinei os modelos finais com os 400 vídeos e salvei** num arquivo, para a Parte 3 usar. Salvei também o peso de cada característica em pontos de nota.
+**6. Treinei os modelos finais com os 400 vídeos e salvei** num arquivo. Os notebooks 2.3 e 2.4 e o motor da Parte 3 carregam esse arquivo, sem precisar treinar de novo.
 
 ## Por que fiz assim
 

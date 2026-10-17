@@ -1,53 +1,33 @@
-# Pergunta 1.4: visualizações para o time de marketing
+# 1.4 Visualizações para o time de marketing
 
-Notebook: [`notebooks/parte1/1_4_visualizacoes_marketing.ipynb`](../../notebooks/parte1/1_4_visualizacoes_marketing.ipynb). Figuras em `reports/figures/`.
-
-## Pergunta
-
-Crie pelo menos 3 visualizações que você usaria para apresentar insights a um time de marketing.
+> Pergunta do case: crie pelo menos 3 visualizações que você usaria para apresentar insights a um time de marketing.
+>
+> Notebook: [`1_4_visualizacoes_marketing.ipynb`](../../notebooks/parte1/1_4_visualizacoes_marketing.ipynb) · Figuras em `reports/figures/`
 
 ## Resposta curta
 
-Fiz três figuras. Cada uma responde a uma pergunta que o time de marketing faria, e juntas elas contam uma história completa.
+Fiz três figuras, cada uma respondendo a uma pergunta que o time de marketing faria. Juntas, elas contam uma história completa.
 
-A **primeira** responde "o que eu mudo no próximo vídeo?". Ela mostra que o gancho nos 3 primeiros segundos é o que mais sobe a nota (+17,6 pontos), os cliques (+66%) e o engajamento (+56%). Mostra também que muito texto na tela vai na direção contrária.
+1. **"O que eu mudo no próximo vídeo?"** Vídeos com gancho nos 3 primeiros segundos têm a maior vantagem na nota (+17,6 pontos), nos cliques (+66%) e no engajamento (+56%). Os com muito texto têm a maior desvantagem.
+2. **"Isso vale em todas as redes?"** Sim: gancho, rosto e texto na medida valem no Meta, no TikTok e no LinkedIn. A voz só pesa no TikTok.
+3. **"O criativo vende?"** Vídeos com gancho têm mais cliques e mais retenção, mas não mais vendas. As campanhas de retargeting é que convertem mais e mais barato.
 
-A **segunda** responde "isso vale em todas as redes?". O gancho e o rosto sobem a nota no Meta, no TikTok e no LinkedIn, e o excesso de texto derruba nas três. O rodapé traz a única exceção: no TikTok, a voz importa.
+## Por que isso importa
 
-A **terceira** responde "o criativo vende?". O gancho sobe os cliques e a retenção, mas não muda a taxa de conversão, o custo por venda nem o retorno. Quem mexe na venda é o público: para quem já conhece a marca, a conversão é 89% maior e cada venda sai 44% mais barata.
+A primeira figura dá a prioridade: começar pelo gancho, depois o rosto, e tomar cuidado com o excesso de texto. A segunda tira um peso: não é preciso uma estratégia diferente para cada rede, só lembrar da voz no TikTok. A terceira muda o que se cobra do vídeo: o criativo é a vitrine, que faz a pessoa parar e entrar na loja; se ela compra depende muito do público e da oferta.
 
-## O que fiz
+## Como cheguei lá
 
-Os números das figuras são os mesmos das perguntas 1.2 e 1.3: a diferença entre a mediana dos vídeos com e sem cada atributo, refeita dentro do notebook. Usei gráficos simples, de barras e de mapa de calor (uma tabela em que a cor mostra o tamanho do número). Cada figura é salva como imagem, pronta para um slide. Embaixo de cada uma, no notebook, escrevi como eu a apresentaria ao time.
+**O título de cada figura é a conclusão**, e não a descrição. "Vídeos com gancho têm a maior vantagem na nota" diz o que levar para casa; "nota por gancho" obriga quem lê a descobrir sozinho. Os títulos falam em "vídeos com X têm..." e não em "X aumenta...", porque os dados mostram o que anda junto, não o que causa.
 
-## Por que estas três
+**O gráfico precisa mostrar a mensagem sozinho, sem depender do rodapé.** Por isso, o que pode ser acaso aparece em cinza claro, e o que é confiável aparece em cor. Na figura 2, só a voz no TikTok fica colorida na linha da música, e é por isso que o título pode dizer "a voz só pesa no TikTok". Essa figura usa a conta "comparando vídeos parecidos" de cada rede (pergunta 1.3), porque a comparação simples escondia o efeito da voz.
 
-Eu tinha feito outras três figuras e tirei, porque elas repetiam algo destas ou mostravam um resultado que cabe numa frase:
+**As figuras 1 e 3 usam a comparação simples** (a diferença entre as medianas com e sem cada atributo), e o rodapé diz isso. Por isso os números delas são um pouco maiores que os da conta "comparando vídeos parecidos": a figura 1 mostra +66% de cliques para o gancho, e a conta mais rigorosa dá cerca de +50%.
 
-- a da duração mostrava que não existe duração ideal, um resultado negativo;
-- a do checklist de boas práticas somava atributos que pesam diferente (o gancho vale bem mais que a legenda), e o peso de cada um já está na primeira figura;
-- a do texto na tela por rede repetia o que as figuras 1 e 2 já mostram.
+**Regras visuais.** Cada rede tem sempre a mesma cor (Meta azul, TikTok laranja, LinkedIn verde). Os valores estão escritos nas barras, com letra grande o bastante para um slide. Não há termos técnicos nos títulos, e o rodapé diz quantos vídeos foram usados. Não há barras de erro, que confundem quem não é técnico; a incerteza aparece na cor.
 
-## Por que fiz assim
-
-**O título de cada figura é a conclusão, e não a descrição.** "O gancho é o que mais sobe a nota" diz o que levar para casa; "nota por gancho" obriga a pessoa a descobrir sozinha.
-
-**Não há termos técnicos nos títulos.** O rodapé diz quantos vídeos foram usados e de onde vêm os dados.
-
-**As cores seguem uma regra.** Cada rede tem sempre a mesma cor (Meta azul, TikTok laranja, LinkedIn verde). O que importa aparece em destaque, e o resto em cinza, para o olho ir direto à mensagem.
-
-**Os valores estão escritos nas barras,** com letras grandes o bastante para um slide, e ninguém precisa ler o eixo.
-
-**Não há barras de erro.** Para quem não é técnico, elas confundem mais do que ajudam. A incerteza aparece em palavras no rodapé ou na cor: na terceira figura, o que pode ser acaso fica em cinza claro.
-
-## O que descobri ao montar as figuras
-
-**A primeira figura começa pela nota, não pelos cliques.** A nota é o que a Klike quer prever e resume o caminho inteiro do cliente. Os cliques e o engajamento vêm ao lado, porque são as métricas que o marketing já acompanha.
-
-**A segunda mostra que não é preciso um manual diferente para cada rede.** O básico vale nas três.
-
-**A terceira muda a conversa sobre o que cobrar do vídeo.** O criativo é a vitrine: ele decide se a pessoa para e entra na loja. Se ela compra depende da oferta e de quem ela é. A única coisa do vídeo que atrapalha até a venda é o excesso de texto.
+**Escolhi três de seis.** Eu tinha feito outras três figuras e tirei: a da duração (mostrava que não há duração ideal, um resultado que cabe numa frase), a do checklist de boas práticas (somava atributos que pesam diferente) e a do texto por rede (repetia as figuras 1 e 2). Embaixo de cada figura, no notebook, escrevi como eu a apresentaria ao time.
 
 ## Limites
 
-As figuras mostram comparações simples entre medianas. Os resultados da conta "mantendo o resto igual" aparecem só nos rodapés: o efeito da música no TikTok, na figura 2, e os efeitos ajustados no funil, na figura 3. E, como em toda a Parte 1, é o que anda junto, não necessariamente o que causa. Para ter certeza de que o gancho causa o aumento, o marketing poderia fazer um teste A/B.
+As figuras 1 e 3 são comparações simples, que não controlam rede nem objetivo. Na figura 3, isso pesa principalmente no retargeting, cujas diferenças podem vir em parte de outras diferenças entre as campanhas. E, como em toda a Parte 1, é o que anda junto, não necessariamente o que causa: para ter certeza de que o gancho causa o aumento, o marketing precisaria de um teste A/B.
